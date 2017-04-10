@@ -9,5 +9,5 @@ To support parsing of ELF files please install pyelftools via
 Original plugin and documentation by Peter Kacherginsky <iphelix@thesprawl.org>
 can be found at: http://thesprawl.org/projects/ida-sploiter/
 
-Thanks to Peter Kacherginsky for the additional plugin, Eli Bendersky for pyelftools
+Thanks to Peter Kacherginsky for the original plugin, Eli Bendersky for pyelftools
 and Dhiru Kholia for porting checksec to python.
