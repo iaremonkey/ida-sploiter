@@ -63,20 +63,15 @@ class StreamWrapper:
         self.base = base
         self.idx = 0
 
-        print "StreamWrapper.init(self.base=0x%08x, self.idx=%d" % (self.base, self.idx)
-
     def seek(self, idx):
         self.idx = idx
-        print "StreamWrapper.seek(self.base=0x%08x, self.idx=%d" % (self.base, self.idx)
 
     def read(self, size):
-        print "StreamWrapper.read(%d)" % size
         data = idaapi.dbg_read_memory(self.base+self.idx, size)
 
         if data == None:
             return ""
 
-        #print "'%s'" % data
         self.idx += len(data)
 
         return data
@@ -496,19 +491,19 @@ class Module():
                 if elf:
                     try:
                         self.NXCompat = nx(elf)
-                    except AttributeError:
+                    except Exception:
                         self.NXCompat = "unk"
 
                     try:
                         self.ASLR = "relro=%s pie=%s" % (relro(elf), pie(elf))
-                    except AttributeError:
+                    except Exception:
                         self.ASLR = "unk"
 
                     self.SafeSEH = "No PE no problem!"
 
                     try:
                         self.GS = canary(elf)
-                    except AttributeError:
+                    except Exception:
                         self.GS = "unk"
 
 
